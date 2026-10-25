@@ -93,6 +93,28 @@ A `project.log` file is created in the project root.
 This confirms that the Python pipeline executes
 and the logging system works.
 
+### Technical Experiment: Height Threshold Adjustment
+
+**Objective:** Evaluate how changing a static anomaly detection threshold affects the number of flagged observations.
+
+**Original configuration:**
+- Age threshold: 16 years
+- Height threshold: 72 inches
+- Records analyzed: 22
+- Anomalies detected: 3
+
+**Modification:**
+- Reduced the height threshold from 72 inches to 68 inches.
+- Kept the age threshold unchanged at 16 years.
+
+**Prediction:** Lowering the height threshold would increase or maintain the number of detected anomalies.
+
+**Observed results:** The modified pipeline identified 4 anomalies, compared with 3 in the original configuration.
+
+**Interpretation:** Lowering the height threshold increased the number of records flagged for review by one. This experiment demonstrates how threshold selection affects anomaly detection sensitivity.
+
+**Limitation:** A flagged observation is not necessarily an error. Additional context would be required to determine whether each flagged record represents a meaningful anomaly.
+
 ## Verification
 
 Run the automated tests:
