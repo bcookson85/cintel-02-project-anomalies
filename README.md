@@ -1,26 +1,26 @@
-# cintel-02-static-anomalies
+# cintel-02-project-anomalies
 
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](pyproject.toml)
-[![CI](https://github.com/denisecase/cintel-02-static-anomalies/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/denisecase/cintel-02-static-anomalies/actions/workflows/ci-python-zensical.yml)
-[![Documentation](https://img.shields.io/badge/docs-site-blue?logo=github)](https://denisecase.github.io/cintel-02-static-anomalies/)
-
+[![CI](https://github.com/bcookson85/cintel-02-project-anomalies/actions/workflows/ci-python-zensical.yml/badge.svg)](https://github.com/bcookson85/cintel-02-project-anomalies/actions/workflows/ci-python-zensical.yml)
+[![Documentation](https://img.shields.io/badge/docs-site-blue?logo=github)](https://bcookson85.github.io/cintel-02-project-anomalies/)
 [![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
 [![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
 [![Zensical docs](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
 [![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-> Detect unusual observations in static data using rule-based anomaly detection.
+> Exploring static anomaly detection using Python, with a focus on identifying unusual project response times and operational delays.
 
 ## Project Overview
 
-Author: Denise Case
+Author: Brian Cookson
 
 Date: 2026 October
 
-This project introduces anomaly detection using a static dataset.
+This project explores static anomaly detection using Python as part of the Continuous Intelligence course at Northwest Missouri State University.
 
-The goal is to load data, identify observations that meet
-defined anomaly criteria, and save the results for review.
+The initial objective is to configure and execute an anomaly detection pipeline using the example dataset, identify observations that meet predefined thresholds, and save the results for review.
+
+My customized project will explore how these same techniques could be applied to project performance monitoring, particularly identifying unusual response times, project delays, and potential operational bottlenecks.
 
 The project is configured in
 [pyproject.toml](pyproject.toml).
@@ -103,7 +103,7 @@ uv run pytest
 
 ## Project Documentation
 
-The [hosted documentation site](https://denisecase.github.io/cintel-02-static-anomalies/)
+The [hosted documentation site](https://bcookson85.github.io/cintel-02-project-anomalies/)
 is published using Zensical and GitHub Pages.
 
 The documentation site is used to present the project report,
@@ -116,8 +116,8 @@ This project includes continuous integration and continuous deployment (CI/CD)
 to check project files and publish the docs.
 GitHub Actions include:
 
-- [CI: Python and Documentation Checks](https://github.com/denisecase/cintel-02-static-anomalies/actions/workflows/ci-python-zensical.yml)
-- [CD: Documentation Deployment](https://github.com/denisecase/cintel-02-static-anomalies/actions/workflows/deploy-zensical.yml)
+- [CI: Python and Documentation Checks](https://github.com/bcookson85/cintel-02-project-anomalies/actions/workflows/ci-python-zensical.yml)
+- [CD: Documentation Deployment](https://github.com/bcookson85/cintel-02-project-anomalies/actions/workflows/deploy-zensical.yml)
 
 ## Developer Reference
 
@@ -202,7 +202,10 @@ testing, documentation, and code quality.
 
 ## Links
 
-- [Hosted Documentation](https://denisecase.github.io/cintel-02-static-anomalies/)
+- [Project Documentation](https://bcookson85.github.io/cintel-02-project-anomalies/)
+- [GitHub Repository](https://github.com/bcookson85/cintel-02-project-anomalies)
+- [Original Example Project](https://github.com/denisecase/cintel-02-static-anomalies)
+- **Data Source:** The original example clinic dataset included in the project's `data/` folder.
 - [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
 - [Citation](CITATION.cff)
 - [License](LICENSE)
