@@ -123,6 +123,68 @@ Run the automated tests:
 uv run pytest
 ```
 
+
+## Custom Application: Project Performance Monitoring
+
+This project extends the original static anomaly detection example to analyze project request response times.
+
+The custom application uses a synthetic dataset of 20 project requests representing Planning, Design, and Construction activities.
+
+### Business Problem
+
+Delayed responses to project requests can create operational bottlenecks and affect project performance.
+
+The objective is to identify requests with unusually long response times so they can be prioritized for further review.
+
+### Detection Method
+
+The application uses rule-based static anomaly detection.
+
+Requests with response times greater than seven days are flagged as anomalies.
+
+The seven-day threshold is an instructional assumption rather than an established organizational standard.
+
+### Custom Project Commands
+
+Run the anomaly detection pipeline:
+
+```powershell
+uv run python -m cintel.project_monitor
+```
+
+Generate the results visualization:
+
+```powershell
+uv run python -m cintel.visualize_project
+```
+
+### Verified Results
+
+The application successfully analyzed 20 project requests and identified four anomalies.
+
+- Total requests: 20
+- Flagged requests: 4
+- Anomaly rate: 20%
+- Longest response time: 15 days
+- Output: `artifacts/project_anomalies.csv`
+
+### Results Visualization
+
+![Project response times with a seven-day anomaly detection threshold](docs/images/project_response_chart.png)
+
+*Figure 1. Four project requests exceeded the selected seven-day response-time threshold.*
+
+### Project Files
+
+- [Project Dataset](data/project_responses.csv)
+- [Custom Detection Pipeline](src/cintel/project_monitor.py)
+- [Reusable Detection Functions](src/cintel/utils_project.py)
+- [Visualization Script](src/cintel/visualize_project.py)
+- [Anomaly Results](artifacts/project_anomalies.csv)
+- [Full Project Report](docs/index.md)
+
+The original clinic anomaly detection application remains available as a reference.
+
 ## Project Documentation
 
 The [hosted documentation site](https://bcookson85.github.io/cintel-02-project-anomalies/)
