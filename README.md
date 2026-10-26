@@ -16,54 +16,105 @@ Author: Brian Cookson
 
 Date: 2026 October
 
-This project explores static anomaly detection using Python as part of the Continuous Intelligence course at Northwest Missouri State University.
 
-The initial objective is to configure and execute an anomaly detection pipeline using the example dataset, identify observations that meet predefined thresholds, and save the results for review.
+This project applies static anomaly detection techniques to project performance monitoring as part of the Continuous Intelligence course at Northwest Missouri State University.
 
-My customized project will explore how these same techniques could be applied to project performance monitoring, particularly identifying unusual response times, project delays, and potential operational bottlenecks.
+The application analyzes a synthetic dataset of 20 project requests across Planning, Design, and Construction phases. Using Python and Polars, it identifies requests with response times exceeding a predefined seven-day threshold.
 
-The project is configured in
-[pyproject.toml](pyproject.toml).
+The completed analysis identified four requests requiring additional review, representing 20% of the dataset. A Matplotlib visualization highlights these observations and provides a clear comparison against the selected threshold.
+
+The project builds upon Dr. Denise Case's original pediatric clinic anomaly detection example, adapting the analytical techniques to a project management problem while preserving the original application for reference.
+
+Project dependencies and configuration are maintained in [pyproject.toml](pyproject.toml).
+
 
 ## Data
 
-The example uses clinic visit data from `data/`.
+The custom application uses a synthetic dataset of 20 fictional project requests stored in [data/project_responses.csv](data/project_responses.csv).
 
 Each observation includes:
 
-- `age_years` - age in years.
-- `height_inches` - height in inches.
+- `request_id` - Unique identifier for the request.
+- `project_phase` - Planning, Design, or Construction.
+- `response_days` - Number of days required to receive a response.
 
-The example demonstrates threshold-based detection.
-Thresholds are instructional examples, not clinical standards.
+The dataset was created for educational purposes and contains no actual employer or client information.
+
+The original clinic dataset remains available in `data/clinic_data.csv` as part of the adapted example.
 
 ## Approach
 
-The pipeline uses Polars to read the dataset,
-apply anomaly rules, and save flagged observations.
+The custom project uses Python and Polars to load a synthetic
+dataset of project requests, apply a seven-day response-time
+threshold, and save observations requiring further review.
 
-Explore these project components:
+Requests with response times greater than seven days are
+flagged as anomalies.
 
-- [pyproject.toml](pyproject.toml) - project configuration and dependencies.
-- [src/cintel/anomaly_detector.py](src/cintel/anomaly_detector.py) - anomaly detection pipeline.
-- [data/](data/) - input data.
-- [artifacts/](artifacts/) - generated results.
-- [tests/](tests/) - automated tests.
-- [.github/workflows/](.github/workflows/) - automated checks and documentation deployment.
-- [docs/](docs/) - project documentation.
+The application also uses Matplotlib to visualize the
+response times and highlight the flagged requests.
+
+### Project Components
+
+- [pyproject.toml](pyproject.toml) - Project configuration and dependencies.
+- [project_monitor.py](src/cintel/project_monitor.py) - Main custom anomaly detection pipeline.
+- [utils_project.py](src/cintel/utils_project.py) - Reusable data-loading and detection functions.
+- [visualize_project.py](src/cintel/visualize_project.py) - Generates the response-time chart.
+- [data/](data/) - Original and custom input datasets.
+- [artifacts/](artifacts/) - Generated anomaly detection results.
+- [tests/](tests/) - Automated Python tests.
+- [.github/workflows/](.github/workflows/) - Automated checks and documentation deployment.
+- [docs/](docs/) - Published project documentation.
+
+The original clinic example remains available in
+`src/cintel/anomaly_detector.py` for comparison.
 
 ## Run the Project
 
-Follow the [Professional Python Workflow Guide](https://denisecase.github.io/pro-analytics-02/)
-to set up your machine and project environment.
+The project uses Python 3.14 and uv for dependency management.
 
-From a VS Code terminal in the project root:
+### Set Up the Environment
 
-```shell
+Clone the repository, open it in VS Code,
+and run the following commands from the project root:
+
+```powershell
+uv python install
+uv sync
+```
+
+### Run the Custom Anomaly Detection Pipeline
+
+```powershell
+uv run python -m cintel.project_monitor
+```
+
+This command loads 20 synthetic project requests,
+applies a seven-day response-time threshold,
+and saves flagged records to:
+
+`artifacts/project_anomalies.csv`
+
+### Generate the Results Visualization
+
+```powershell
+uv run python -m cintel.visualize_project
+```
+
+This generates the visualization at:
+
+`docs/images/project_response_chart.png`
+
+### Run the Original Example
+
+The original clinic anomaly detection pipeline
+can still be executed using:
+
+```powershell
 uv run python -m cintel.anomaly_detector
 ```
 
-## Run the Reactive App
+## Run the Original Clinic Reactive App
 
 From a VS Code terminal in the project root
 (hit CTRL + c to quit):
@@ -74,24 +125,22 @@ uv run marimo run  src/cintel/app.py
 
 ## Results
 
-The pipeline identifies observations that
-meet the defined anomaly criteria
-and writes the flagged records to artifacts/anomalies.csv.
-Review the generated CSV to understand which observations were flagged
-and why.
+The custom Project Performance Monitoring pipeline successfully
+analyzed 20 synthetic project requests using a seven-day
+response-time threshold.
 
-Successful execution produces:
+Four requests exceeded the selected threshold, representing
+20% of the dataset.
 
-```shell
-========================
-Pipeline executed successfully!
-========================
-```
+The flagged requests are saved in
+[artifacts/project_anomalies.csv](artifacts/project_anomalies.csv).
 
-A `project.log` file is created in the project root.
+The results are also presented in the
+[Project Performance Monitoring Report](docs/index.md),
+including a visualization, interpretation, and limitations.
 
-This confirms that the Python pipeline executes
-and the logging system works.
+The original clinic example and the earlier threshold
+experiment are preserved for comparison.
 
 ### Technical Experiment: Height Threshold Adjustment
 
